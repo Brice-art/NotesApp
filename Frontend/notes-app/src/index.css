@@ -26,3 +26,33 @@
   @apply w-full text-sm font-medium text-white bg-primary shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-blue-600/15 hover:text-blue-600 cursor-pointer
 }
 
+.masonry {
+  /*@apply grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-8;*/
+  column-count: 3;
+  column-gap: 1rem;
+  padding: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+.masonry-item:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+@media (max-width: 480px) {
+  .masonry {
+    column-count: 1;
+  }
+}
+

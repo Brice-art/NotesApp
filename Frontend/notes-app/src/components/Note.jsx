@@ -42,7 +42,7 @@ const Note = (props) => {
   };
 
   return (
-    <div className="relative max-w-[100%]">
+    <div className="relative max-w-[100%] masonry-item">
       <div className="bg-white rounded-lg overflow-hidden shadow border border-gray-200">
         {/* card header */}
         <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">

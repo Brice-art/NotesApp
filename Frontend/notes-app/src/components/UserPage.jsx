@@ -3,6 +3,8 @@ import InputSpace from "./InputSpace";
 import Note from "./Note";
 import axios from "axios";
 import { Outlet, useParams } from "react-router-dom";
+import Footer from "./Footer";
+
 
 const UserPage = () => {
   const { userId } = useParams();
@@ -15,7 +17,7 @@ const UserPage = () => {
 
   const handleAdd = (newNote) => {
     setNotes((prevNotes) => [newNote, ...prevNotes]);
-  }
+  };
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -33,25 +35,40 @@ const UserPage = () => {
     fetchNotes();
   }, [userId]); // Dependency array ensures this runs when userId changes
   if (loading) {
-    return <Outlet />
+    return <Outlet />;
   }
   return (
     <div>
-      <h1 className="flex justify-center text-center text-4xl bg-blue-100 py-4">
+      <h1 className="flex justify-center text-center text-4xl bg-gray-800 text-white py-4">
         Notes App
       </h1>
       <div className="flex justify-center mt-4 p-4">
-        <InputSpace onAdd={handleAdd}/>
+        <InputSpace onAdd={handleAdd} />
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-8">
+      <div className="masonry">
         {notes.length > 0 ? (
           notes.map((note) => (
-            <Note key={note._id} id={note._id} title={note.title} content={note.content} onDelete={handleDelete}/>
+            <Note
+              key={note._id}
+              id={note._id}
+              title={note.title}
+              content={note.content}
+              onDelete={handleDelete}
+            />
           ))
         ) : (
           <p>No notes available</p>
         )}
       </div>
+      <div className="flex justify-center mt-4">
+        <p className="text-gray-500">User ID: {userId}</p>
+      </div>
+      <div className="flex justify-center mt-4">
+        <p className="text-gray-500">Total Notes: {notes.length}</p>
+      </div>
+  
+      <Footer />
+      <Outlet />
     </div>
   );
 };
