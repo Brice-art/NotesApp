@@ -40,10 +40,10 @@ const Login = () => {
 
   };
   return (
-    <div className="flex justify-center">
-      <div className="md:w-[50%] h-3/4 md:h-full flex flex-col justify-center">
-        <h1 className="text-4xl text-blue-500">Notes App</h1>
-        <form onSubmit={handleLogin}>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
+        <h1 className="text-4xl text-blue-600 font-bold mb-6 text-center">Notes App</h1>
+        <form onSubmit={handleLogin} className="space-y-4">
           <Input
             label="Email"
             value={email}
@@ -60,16 +60,16 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {error && <p className="text-red-500 text-xs pb-2 5">{error}</p>}
+          {error && <p className="text-red-500 text-xs">{error}</p>}
 
-          <button type="submit" className="btn-primary">
+          <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded transition">
             LOGIN
           </button>
 
-          <p className=" text-[13px] text-slate-800 mt-3">
+          <p className="text-center text-[13px] text-slate-800 mt-3">
             Don't have an account?{" "}
-            <Link className="font-medium text-primary underline" to="/signup">
-              SignUp
+            <Link className="font-medium text-blue-600 underline" to="/signup">
+              Sign Up
             </Link>
           </p>
         </form>
