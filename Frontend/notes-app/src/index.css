@@ -50,7 +50,7 @@
     column-count: 2;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .masonry {
     column-count: 1;
   }

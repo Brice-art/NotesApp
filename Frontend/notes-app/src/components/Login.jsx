@@ -29,7 +29,8 @@ const Login = () => {
     //Login API call
 
     try {
-        const response = await axios.post("http://localhost:3000/auth/login", {email, password});
+        const API_URL = import.meta.env.VITE_API_URL;
+        const response = await axios.post(`${API_URL}/auth/login`, { email, password }, { withCredentials: true });
         if (response.data) {
             const userId = response.data._id;
             navigate(`/${userId}/notes`)

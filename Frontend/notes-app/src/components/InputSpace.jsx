@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 const InputSpace = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const textareaRef = useRef(null);
 
@@ -36,14 +36,14 @@ const InputSpace = (props) => {
     if (loading) return;
     setLoading(true);
     try {
+      const API_URL = import.meta.env.VITE_API_URL;
       const response = await axios.post(
-        `http://localhost:3000/notes/${userId}`,
-        { title, content }
+        `${API_URL}/notes/${userId}`,
+        { title, content } , { withCredentials: true }
       );
       props.onAdd(response.data);
       setContent("");
       setTitle("");
-      
     } catch (error) {
       console.error("Error creating notes:", error);
     } finally {
